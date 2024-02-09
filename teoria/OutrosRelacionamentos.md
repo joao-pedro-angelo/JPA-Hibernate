@@ -33,6 +33,6 @@ Há anotações para relacionamentos de um para um, @OneToOne. Há para muitos p
 
 
 #### Cuidado com a exceção de transação!
-Em nosso sistema, um produto tem uma categoria. Para salvarmos um produto na base de dados, é necessário que a categoria dele
+Em nosso sistema, um product tem uma category. Para salvarmos um product na base de dados, é necessário que a category dele
 já esteja salva no banco de dados.
-Produto possui/contém uma categoria. Logo, a categoria tem que existir antes do produto.
+Produto possui/contém uma category. Logo, a category tem que existir antes do product.

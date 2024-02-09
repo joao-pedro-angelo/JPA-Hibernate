@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "Produtos")
 // Caso o nome da tabela seja modificado, basta mudar o @ acima
-public class Produto {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,18 +16,18 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
     @ManyToOne
-    private Categoria categoria;
+    private Category category;
 
-    public Produto() {}
+    public Product() {}
 
-    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+    public Product(String nome, String descricao, BigDecimal preco, Category category) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.categoria = categoria;
+        this.category = category;
     }
 
-    public Categoria getCategoria(){
-        return this.categoria;
+    public Category getCategoria(){
+        return this.category;
     }
 }
