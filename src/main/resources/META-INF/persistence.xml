@@ -21,8 +21,11 @@
                 <property name="javax.persistence.jdbc.user" value="sa"/>
                 <!-- Senha -->
                 <property name="javax.persistence.jdbc.password" value=""/>
-                <!-- Dialeto do Banco de Dados -->
+
+                <!-- Propriedades específicas do Hibernate -->
                 <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+                <property name="hibernate.show_sql" value="true"/>
+                <property name="hibernate.hbm2ddl.auto" value="update"/>
             </properties>
         </persistence-unit>
 

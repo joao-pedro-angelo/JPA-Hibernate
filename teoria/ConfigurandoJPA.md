@@ -57,3 +57,8 @@
 
 </persistence>
 ```
+
+O arquivo acima pode ser melhorado, com algumas outras propriedades específicas
+do Hibernate. Veja ele completo em:
+
+[persistence.xml](/src/main/resources/META-INF/persistence.xml)
