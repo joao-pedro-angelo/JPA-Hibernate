@@ -42,8 +42,8 @@ na base de dados.
 ---
 ### .merge()
 
-Este método pega uma entidade que está no estado detached, ou seja, já está salva no BD e passa
-esta entidade para o estado managed. 
+Este método assegura que o estado do objeto é Managed, ou seja, está sendo
+manuseado pela JPA.
 
 Para que esse método funcione corretamente, é necessário que as entidades
 possuam o construtor default.
@@ -61,6 +61,8 @@ Recuperei a entidade, alterei o nome e atualizeo o banco de dados.
 ### .find()
 
 Este método pode ser utilizado para encontrar determinada entidade, passando o seu ID.
+O objeto recuperado estará no estado Managed, ou seja, sob a ação da JPA.
+Muito útil para atualizar objetos.
 
 
 ---
@@ -83,3 +85,7 @@ A entidade produto será atualizada no banco de dados com a descrição Teste 3
 No código anterior o merge acabou sendo indiferente, pois a entidade já estava no estado Managed
 
 
+---
+### Delete de uma entidade
+
+Basta usar o método .remove, na entidade que estiver sob o estado managed.
