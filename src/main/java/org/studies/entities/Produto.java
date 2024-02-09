@@ -1,5 +1,7 @@
 package org.studies.entities;
 
+import org.studies.entities.enums.Categoria;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -15,32 +17,17 @@ public class Produto {
     @Column(name = "desc")
     private String descricao;
     private BigDecimal preco;
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
 
-    public Long getId(){
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
         this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public BigDecimal getPreco() {
-        return this.preco;
-    }
-
-    public void setPreco(BigDecimal preco) {
         this.preco = preco;
+        this.categoria = categoria;
+    }
+
+    public Produto() {
+
     }
 }

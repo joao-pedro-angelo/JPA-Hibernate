@@ -3,6 +3,7 @@ package org.studies;
 import org.studies.JPAUtil.CreateEntityManeger;
 import org.studies.daos.ProdutoDAO;
 import org.studies.entities.Produto;
+import org.studies.entities.enums.Categoria;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -11,10 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
         // Criação do objeto que será persistido - Simula um usuário
-        Produto celularXiamo = new Produto();
-        celularXiamo.setNome("Celular XIAMO");
-        celularXiamo.setDescricao("Um celular");
-        celularXiamo.setPreco(new BigDecimal("800"));
+        Produto celularXiamo = new Produto("Celular XIAOMI", "Um celular",
+                new BigDecimal("800"), Categoria.CELULAR);
 
         // Criação do Entity Manager
         EntityManager em = CreateEntityManeger.createEntityManager();
