@@ -16,6 +16,7 @@ public class Main {
         celularXiamo.setDescricao("Um celular");
         celularXiamo.setPreco(new BigDecimal("800"));
 
+        // Criação do Entity Manager
         EntityManager em = CreateEntityManeger.createEntityManager();
         ProdutoDAO dao = new ProdutoDAO(em);
 
