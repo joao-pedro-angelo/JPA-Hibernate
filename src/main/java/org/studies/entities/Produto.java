@@ -17,6 +17,8 @@ public class Produto {
     @Column(name = "desc")
     private String descricao;
     private BigDecimal preco;
+
+    //A anotação abaixo indica qual o tipo da coluna "Categoria", já que não usamos um tipo primitivo
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
