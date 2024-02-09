@@ -18,6 +18,7 @@ public class CategoryDAO {
 
     public void atualizarCategoria(Category category){
         this.em.merge(category);
+        this.em.flush();
     }
 
     public void removerCategoria(Category category){
