@@ -77,4 +77,5 @@ A JPA é uma especifação. O Hibernate é uma das implementações da JPA
 
 [Configuração JPA](/teoria/ConfigurandoJPA.md)<br><br>
 [Mapeamento de Entidades](/teoria/MapeandoEntidades.md)<br><br>
-[Outros Relacionamentos](/teoria/OutrosRelacionamentos.md)
+[Outros Relacionamentos](/teoria/OutrosRelacionamentos.md)<br><br>
+[Ciclo de Vida](/teoria/CicloDeVida.md)
