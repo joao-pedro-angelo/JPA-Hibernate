@@ -24,7 +24,7 @@ public class Main {
         // Início e conclusão da transação
         em.getTransaction().begin();
         categoryDao.cadastrarCategoria(celularXiamo.getCategoria());
-        productDao.cadastrarProduto(celularXiamo);
+        productDao.cadastrarProduct(celularXiamo);
         em.getTransaction().commit();
         em.close();
     }

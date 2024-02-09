@@ -14,7 +14,11 @@ public class ProductDAO {
     }
 
     // Cadastrar Produto - Repare como é um método bem mais enxuto do que o da JDBC pura
-    public void cadastrarProduto(Product product){
+    public void cadastrarProduct(Product product){
         this.em.persist(product);
+    }
+
+    public void atualizaProduct(Product product){
+        this.em.merge(product);
     }
 }
