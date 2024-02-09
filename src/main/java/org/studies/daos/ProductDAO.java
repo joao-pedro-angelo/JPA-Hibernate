@@ -20,5 +20,11 @@ public class ProductDAO {
 
     public void atualizarProduct(Product product){
         this.em.merge(product);
+        this.em.flush();
+    }
+
+    public void removerProduct(Product product){
+        product = this.em.merge(product);
+        this.em.remove(product);
     }
 }
