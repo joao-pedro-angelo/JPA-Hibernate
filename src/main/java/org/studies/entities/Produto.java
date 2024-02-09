@@ -1,7 +1,5 @@
 package org.studies.entities;
 
-import org.studies.entities.enums.Categoria;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,10 +15,10 @@ public class Produto {
     @Column(name = "desc")
     private String descricao;
     private BigDecimal preco;
-
-    //A anotação abaixo indica qual o tipo da coluna "Categoria", já que não usamos um tipo primitivo
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private Categoria categoria;
+
+    public Produto() {}
 
     public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
         this.nome = nome;
@@ -29,7 +27,7 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public Produto() {
-
+    public Categoria getCategoria(){
+        return this.categoria;
     }
 }

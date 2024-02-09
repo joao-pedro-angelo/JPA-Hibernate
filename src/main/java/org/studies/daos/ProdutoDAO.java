@@ -17,6 +17,4 @@ public class ProdutoDAO {
     public void cadastrarProduto(Produto produto){
         this.em.persist(produto);
     }
-
-
 }
