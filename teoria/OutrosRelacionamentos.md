@@ -20,7 +20,7 @@ private AlgumEnum meuEnum;
 ```
 
 Logo, a JPA saberá que deve mapear aquele atributo para uma coluna
-do tipo String.
+do tipo String e a coluna será nomeada como "AlgumEnum", sendo um dos valores o valor de "meuEnum".
 
 
 ---
