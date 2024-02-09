@@ -15,8 +15,8 @@ uma configuração por anotação. Para enumeradores, basta usar:
 ```java
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
 @Enumerated(EnumType.STRING)
+private AlgumEnum meuEnum;
 ```
 
 Logo, a JPA saberá que deve mapear aquele atributo para uma coluna
