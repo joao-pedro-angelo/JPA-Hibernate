@@ -29,7 +29,7 @@ do tipo String e a coluna será nomeada como "AlgumEnum", sendo um dos valores o
 Quando temos mais de uma tabela em nosso sistema, ou seja, mais de uma entidade, elas podem se relacionar 
 por meio da composição e serem facilmente mapeadas por meio de anotações.
 
-Há anotações para relacionamentos de um para um, @OneToOne. Há para muitos para um, @ManyToOne... e assim por diante!
+Há anotações para relacionamentos de um para um, **@OneToOne**. Há para muitos para um, **@ManyToOne**... e assim por diante!
 
 
 #### Cuidado com a exceção de transação!
