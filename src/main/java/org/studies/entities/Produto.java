@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Produtos")
+// Caso o nome da tabela seja modificado, basta mudar o @ acima
 public class Produto {
 
     @Id
