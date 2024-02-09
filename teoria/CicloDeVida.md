@@ -58,3 +58,28 @@ Recuperei a entidade, alterei o nome e atualizeo o banco de dados.
 
 
 ---
+### .find()
+
+Este método pode ser utilizado para encontrar determinada entidade, passando o seu ID.
+
+
+---
+### Exemplo de código
+
+```txt
+em.getTransaction().begin();
+Produto produto = em.find(Produto.class, 1l);
+produto.setDescricao(“Teste 1”);
+em.flush();
+produto.setDescricao(“Teste 2”);
+em.merge(produto);
+produto.setDescricao(“Teste 3”);
+em.getTransaction().commit();
+em.close();
+```
+
+A entidade produto será atualizada no banco de dados com a descrição Teste 3
+
+No código anterior o merge acabou sendo indiferente, pois a entidade já estava no estado Managed
+
+
