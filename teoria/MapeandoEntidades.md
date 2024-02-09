@@ -29,7 +29,7 @@ public class Produto {
     // As colunas da tabela serão os atributos
     
     @Id
-    @GeneratedValue(GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
     private String nome;
