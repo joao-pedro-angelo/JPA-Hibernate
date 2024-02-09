@@ -75,5 +75,4 @@ A JPA é uma especifação. O Hibernate é uma das implementações da JPA
 ---
 # JPA em Prática
 
-> Código que utiliza o Hibernate JPA:
-> > 
+[Configuração JPA](/teoria/ConfigurandoJPA.md)<br><br>

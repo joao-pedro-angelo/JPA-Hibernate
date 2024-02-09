@@ -1,0 +1,59 @@
+# Arquivos .xml
+
+---
+## pom.xml
+
+```xml
+<dependencies>
+
+        <!-- Dependência do Hibernate, implementação da JPA -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.27.Final</version>
+        </dependency>
+
+        <!-- Dependência do H2, banco de dados escolhido para armazenar os dados -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+        </dependency>
+
+    </dependencies>
+```
+
+---
+## persistence.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence version="2.0"
+
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        <!-- Acima, a configuração padrão necessária para usar a JPA-->
+
+        <!-- Abaixo, configuração relacionada ao banco de dados -->
+        <!-- Cada persistence-unit faz referência a um banco de dados -->
+        <!-- Se fôssemos usar mais de um banco de dados, teríamos que ter uma tag dessas
+        para cada banco -->
+        <persistence-unit name="StudiesJPA" transaction-type="RESOURCE_LOCAL">
+            <!-- Propriedades do banco de dados StudiesJPA -->
+            <properties>
+                <!-- Driver do Banco de Dados -->
+                <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+                <!-- URL de conexão com o banco de dados -->
+                <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:StudiesJPA"/>
+                <!-- Usuário -->
+                <property name="javax.persistence.jdbc.user" value="sa"/>
+                <!-- Senha -->
+                <property name="javax.persistence.jdbc.password" value=""/>
+                <!-- Dialeto do Banco de Dados -->
+                <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            </properties>
+        </persistence-unit>
+
+</persistence>
+```
