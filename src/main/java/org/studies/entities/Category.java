@@ -3,17 +3,17 @@ package org.studies.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Categorias")
+@Table(name = "CategoryTable")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
 
     public Category(){}
 
-    public Category(String nome){
-        this.nome = nome;
+    public Category(String name){
+        this.name = name;
     }
 }
