@@ -36,7 +36,7 @@ public class ServiceCategory {
         this.entityManager.close();
     }
 
-    public Category readCategory(Long key){
+    public Category readCategory(String key){
         this.entityManager.getTransaction().begin();
         Category category = this.categoryDAO.readCategory(key);
         this.entityManager.getTransaction().commit();

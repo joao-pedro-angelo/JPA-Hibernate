@@ -4,11 +4,13 @@ import org.studies.JPAUtil.CreateEntityManager;
 import org.studies.daos.CategoryDAO;
 import org.studies.daos.ProductDAO;
 import org.studies.entities.Category;
+import org.studies.entities.Product;
 import org.studies.exception.RegraDeNegocioException;
 import org.studies.services.ServiceCategory;
 import org.studies.services.ServiceProduct;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
@@ -60,21 +62,62 @@ public class Main {
     }
 
     private static void atualizarCategoria() {
+        System.out.println("\n");
+        System.out.println("ATUALIZAR CATEGORIA: ");
+        System.out.println("Nome atual da categoria: ");
+        String actualName = scanner.nextLine();
+        System.out.println("Novo nome: ");
+        String newName = scanner.nextLine();
+
+        Category category = serviceCategory.readCategory(actualName);
+        category.setName(newName);
+        serviceCategory.updateCategory(category);
     }
 
     private static void exibirProduto() {
     }
 
     private static void exibirCategoria() {
+        System.out.println("\n");
+        System.out.println("EXIBIR CATEGORIA: ");
+        System.out.println("Nome da categoria: ");
+        String categoryName = scanner.nextLine();
+
+        System.out.println(serviceCategory.readCategory(categoryName));
     }
 
     private static void removerProduto() {
     }
 
     private static void removerCategoria() {
+        System.out.println("\n");
+        System.out.println("REMOVER CATEGORIA: ");
+        System.out.println("Nome da categoria: ");
+        String name = scanner.nextLine();
+
+        Category category = serviceCategory.readCategory(name);
+        serviceCategory.removeCategory(category);
+
+        System.out.println("Remoção bem sucedida!");
     }
 
     private static void criarProduto() {
+        System.out.println("\n");
+        System.out.println("CRIAR PRODUTO: ");
+        System.out.println("Nome do produto: ");
+        String nameProduct = scanner.nextLine();
+        System.out.println("Descrição do produto: ");
+        String description = scanner.nextLine();
+        System.out.println("Valor: ");
+        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.nextLine()));
+        System.out.println("Nome da categoria: ");
+        String categoryName = scanner.nextLine();
+        Category category = serviceCategory.readCategory(categoryName);
+
+        Product product = new Product(nameProduct, description, value, category);
+        serviceProduct.createProduct(product);
+
+        System.out.println("Produto criado com sucesso!");
     }
 
     private static void criarCategoria() {
@@ -82,8 +125,10 @@ public class Main {
         System.out.println("CRIAR CATEGORIA: ");
         System.out.println("Nome da categoria: ");
         String nameCategory = scanner.nextLine();
+
         Category category = new Category(nameCategory);
         serviceCategory.createCategory(category);
+
         System.out.println("Categoria criada com sucesso!");
     }
 

@@ -26,7 +26,7 @@ public class CategoryDAO {
         this.entityManager.remove(category);
     }
 
-    public Category readCategory(Long key){
+    public Category readCategory(String key){
         return this.entityManager.find(Category.class, key);
     }
 }
