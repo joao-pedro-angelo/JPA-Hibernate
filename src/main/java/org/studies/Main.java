@@ -1,6 +1,6 @@
 package org.studies;
 
-import org.studies.JPAUtil.CreateEntityManeger;
+import org.studies.JPAUtil.CreateEntityManager;
 import org.studies.daos.CategoryDAO;
 import org.studies.daos.ProductDAO;
 import org.studies.entities.Category;
@@ -17,7 +17,7 @@ public class Main {
                 new BigDecimal("800"), new Category("Informática"));
 
         // Criação do Entity Manager
-        EntityManager em = CreateEntityManeger.createEntityManager();
+        EntityManager em = CreateEntityManager.createEntityManager();
         ProductDAO productDao = new ProductDAO(em);
         CategoryDAO categoryDao = new CategoryDAO(em);
 
