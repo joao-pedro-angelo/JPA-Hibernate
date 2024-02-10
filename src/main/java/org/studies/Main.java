@@ -3,7 +3,7 @@ package org.studies;
 import org.studies.JPAUtil.CreateEntityManager;
 import org.studies.daos.CategoryDAO;
 import org.studies.daos.ProductDAO;
-import org.studies.exception.RegraDeNegocio;
+import org.studies.exception.RegraDeNegocioException;
 import org.studies.services.ServiceCategory;
 import org.studies.services.ServiceProduct;
 
@@ -47,7 +47,7 @@ public class Main {
                         atualizarProduto();
                         break;
                 }
-            } catch (RegraDeNegocio e){
+            } catch (RegraDeNegocioException e){
                 System.out.println("Erro: " + e.getMessage());
             }
             opcao = exibirMenu();
