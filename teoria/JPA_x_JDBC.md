@@ -70,12 +70,3 @@ Vale lembrar, que a JPA utiliza o JDBC por baixo dos panos. Mas a camada de abst
 ## JPA Hibernate
 
 A JPA é uma especifação. O Hibernate é uma das implementações da JPA
-
-
----
-# JPA em Prática
-
-[Configuração JPA](/teoria/ConfigurandoJPA.md)<br><br>
-[Mapeamento de Entidades](/teoria/MapeandoEntidades.md)<br><br>
-[Outros Relacionamentos](/teoria/OutrosRelacionamentos.md)<br><br>
-[Ciclo de Vida](/teoria/CicloDeVida.md)<br><br>
