@@ -122,3 +122,9 @@ public static void updateRecord() {
  entityManager.close();
 }
 ```
+
+
+---
+## Extra
+
+Sobre o ciclo de vida de uma entidade: [Ciclo de Vida](/teoria/CicloDeVida.md)
