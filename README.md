@@ -34,7 +34,7 @@
 ---
 ## JPA Util
 
-> Para detalhes, acesse: [JPA Util](src/main/java/org/studies/JPAUtil/CreateEntityManeger.java)
+> Para detalhes, acesse: [JPA Util](/src/main/java/org/studies/JPAUtil/CreateEntityManager.java)
 
 Crie a classe JPA Util para criar e devolver a EntityManager
 
