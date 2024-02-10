@@ -25,4 +25,8 @@ public class ProductDAO {
         product = this.entityManager.merge(product);
         this.entityManager.remove(product);
     }
+
+    public Product readProduct(Long key){
+        return this.entityManager.find(Product.class, key);
+    }
 }

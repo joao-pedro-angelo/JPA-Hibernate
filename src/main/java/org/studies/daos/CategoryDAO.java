@@ -25,4 +25,8 @@ public class CategoryDAO {
         category = this.entityManager.merge(category);
         this.entityManager.remove(category);
     }
+
+    public Category readCategory(Long key){
+        return this.entityManager.find(Category.class, key);
+    }
 }
