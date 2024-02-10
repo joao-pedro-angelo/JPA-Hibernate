@@ -1,5 +1,7 @@
 package org.studies.entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -8,13 +10,17 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
+    @NotNull
     private String name;
     @Column(name = "quant")
+    @NotNull
     private Integer quantity;
     @Column(name = "desc")
     private String description;
+    @NotNull
     private BigDecimal value;
     @ManyToOne
+    @NotNull
     private Category category;
 
     public Product() {}
