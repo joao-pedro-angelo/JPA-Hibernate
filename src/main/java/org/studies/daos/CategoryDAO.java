@@ -6,23 +6,23 @@ import javax.persistence.EntityManager;
 
 public class CategoryDAO {
 
-    private EntityManager em;
+    private EntityManager entityManager;
 
-    public CategoryDAO(EntityManager em){
-        this.em = em;
+    public CategoryDAO(EntityManager entityManager){
+        this.entityManager = entityManager;
     }
 
-    public void cadastrarCategoria(Category category){
-        this.em.persist(category);
+    public void createCategory(Category category){
+        this.entityManager.persist(category);
     }
 
-    public void atualizarCategoria(Category category){
-        this.em.merge(category);
-        this.em.flush();
+    public void updateCategory(Category category){
+        this.entityManager.merge(category);
+        this.entityManager.flush();
     }
 
-    public void removerCategoria(Category category){
-        category = this.em.merge(category);
-        this.em.remove(category);
+    public void removeCategory(Category category){
+        category = this.entityManager.merge(category);
+        this.entityManager.remove(category);
     }
 }
