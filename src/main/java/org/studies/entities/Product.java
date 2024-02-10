@@ -4,30 +4,25 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Produtos")
-// Caso o nome da tabela seja modificado, basta mudar o @ acima
+@Table(name = "ProductTable")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
     @Column(name = "desc")
-    private String descricao;
-    private BigDecimal preco;
+    private String description;
+    private BigDecimal value;
     @ManyToOne
     private Category category;
 
     public Product() {}
 
-    public Product(String nome, String descricao, BigDecimal preco, Category category) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
+    public Product(String name, String description, BigDecimal value, Category category) {
+        this.name = name;
+        this.description = description;
+        this.value = value;
         this.category = category;
-    }
-
-    public Category getCategoria(){
-        return this.category;
     }
 }
