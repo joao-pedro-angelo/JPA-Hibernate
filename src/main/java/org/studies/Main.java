@@ -3,6 +3,7 @@ package org.studies;
 import org.studies.JPAUtil.CreateEntityManager;
 import org.studies.daos.CategoryDAO;
 import org.studies.daos.ProductDAO;
+import org.studies.entities.Category;
 import org.studies.exception.RegraDeNegocioException;
 import org.studies.services.ServiceCategory;
 import org.studies.services.ServiceProduct;
@@ -77,6 +78,13 @@ public class Main {
     }
 
     private static void criarCategoria() {
+        System.out.println("\n");
+        System.out.println("CRIAR CATEGORIA: ");
+        System.out.println("Nome da categoria: ");
+        String nameCategory = scanner.nextLine();
+        Category category = new Category(nameCategory);
+        serviceCategory.createCategory(category);
+        System.out.println("Categoria criada com sucesso!");
     }
 
     private static int exibirMenu(){
