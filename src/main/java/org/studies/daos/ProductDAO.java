@@ -6,25 +6,23 @@ import javax.persistence.EntityManager;
 
 public class ProductDAO {
 
-    private EntityManager em;
+    private EntityManager entityManager;
 
-    // Inversão de controle e injeção de dependências;
-    public ProductDAO(EntityManager em){
-        this.em = em;
+    public ProductDAO(EntityManager entityManager){
+        this.entityManager = entityManager;
     }
 
-    // Cadastrar Produto - Repare como é um método bem mais enxuto do que o da JDBC pura
-    public void cadastrarProduct(Product product){
-        this.em.persist(product);
+    public void createProduct(Product product){
+        this.entityManager.persist(product);
     }
 
-    public void atualizarProduct(Product product){
-        this.em.merge(product);
-        this.em.flush();
+    public void updateProduct(Product product){
+        this.entityManager.merge(product);
+        this.entityManager.flush();
     }
 
-    public void removerProduct(Product product){
-        product = this.em.merge(product);
-        this.em.remove(product);
+    public void removeProduct(Product product){
+        product = this.entityManager.merge(product);
+        this.entityManager.remove(product);
     }
 }
