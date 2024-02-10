@@ -26,7 +26,7 @@ public class ProductDAO {
         this.entityManager.remove(product);
     }
 
-    public Product readProduct(Long key){
+    public Product readProduct(String key){
         return this.entityManager.find(Product.class, key);
     }
 }

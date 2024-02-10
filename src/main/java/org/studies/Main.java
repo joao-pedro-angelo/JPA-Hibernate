@@ -59,6 +59,32 @@ public class Main {
     }
 
     private static void atualizarProduto() {
+        System.out.println("\n");
+        System.out.println("ATUALIZAR PRODUTO: ");
+        System.out.println("Nome do produto: ");
+        String actualName = scanner.nextLine();
+
+        Product product = serviceProduct.readProduct(actualName);
+
+        System.out.println("Novo nome (pode ser o mesmo): ");
+        String newName = scanner.nextLine();
+        System.out.println("Quantidade no estoque: ");
+        Integer quantity = Integer.parseInt(scanner.nextLine());
+        System.out.println("Descrição do produto: ");
+        String description = scanner.nextLine();
+        System.out.println("Valor: ");
+        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.nextLine()));
+        System.out.println("Nome da categoria: ");
+        String categoryName = scanner.nextLine();
+        Category category = serviceCategory.readCategory(categoryName);
+
+        product.setName(newName);
+        product.setQuantity(quantity);
+        product.setDescription(description);
+        product.setValue(value);
+        product.setCategory(category);
+
+        serviceProduct.updateProduct(product);
     }
 
     private static void atualizarCategoria() {
@@ -75,6 +101,12 @@ public class Main {
     }
 
     private static void exibirProduto() {
+        System.out.println("\n");
+        System.out.println("EXIBIR PRODUTO: ");
+        System.out.println("Nome do produto: ");
+        String nameProduct = scanner.nextLine();
+
+        System.out.println(serviceProduct.readProduct(nameProduct));
     }
 
     private static void exibirCategoria() {
@@ -87,6 +119,15 @@ public class Main {
     }
 
     private static void removerProduto() {
+        System.out.println("\n");
+        System.out.println("REMOVER PRODUTO: ");
+        System.out.println("Nome do produto: ");
+        String nameProduct = scanner.nextLine();
+
+        Product product = serviceProduct.readProduct(nameProduct);
+        serviceProduct.removeProduct(product);
+
+        System.out.println("Remoção bem sucedida!");
     }
 
     private static void removerCategoria() {
@@ -106,6 +147,8 @@ public class Main {
         System.out.println("CRIAR PRODUTO: ");
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
+        System.out.println("Quantidade no estoque: ");
+        Integer quantity = Integer.parseInt(scanner.nextLine());
         System.out.println("Descrição do produto: ");
         String description = scanner.nextLine();
         System.out.println("Valor: ");
@@ -114,7 +157,7 @@ public class Main {
         String categoryName = scanner.nextLine();
         Category category = serviceCategory.readCategory(categoryName);
 
-        Product product = new Product(nameProduct, description, value, category);
+        Product product = new Product(nameProduct, quantity, description, value, category);
         serviceProduct.createProduct(product);
 
         System.out.println("Produto criado com sucesso!");

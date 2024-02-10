@@ -36,7 +36,7 @@ public class ServiceProduct {
         this.entityManager.close();
     }
 
-    public Product readProduct(Long key){
+    public Product readProduct(String key){
         this.entityManager.getTransaction().begin();
         Product product = this.productDAO.readProduct(key);
         this.entityManager.getTransaction().commit();

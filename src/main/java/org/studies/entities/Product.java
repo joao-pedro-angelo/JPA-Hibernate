@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String name;
+    @Column(name = "quant")
+    private Integer quantity;
     @Column(name = "desc")
     private String description;
     private BigDecimal value;
@@ -19,10 +19,42 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, String description, BigDecimal value, Category category) {
+    public Product(String name, Integer quantity, String description, BigDecimal value, Category category) {
         this.name = name;
+        this.quantity = quantity;
         this.description = description;
         this.value = value;
         this.category = category;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setQuantity(Integer quantity){
+        this.quantity = quantity;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setValue(BigDecimal value){
+        this.value = value;
+    }
+
+    public void setCategory(Category category){
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + this.name + '\'' +
+                ", quantity=" + this.quantity +
+                ", description='" + this.description + '\'' +
+                ", value=" + this.value +
+                ", category=" + this.category +
+                '}';
     }
 }
