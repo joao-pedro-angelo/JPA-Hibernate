@@ -24,11 +24,11 @@
 
 > Para detalhes, leia: [Mapeando Entidades](/teoria/MapeandoEntidades.md)
 
-* 1 - Crie uma classe para cada uma das entidades do seu sistema
-* 2 - Para que cada uma dessas entidades seja mapeada para uma tabela no banco de dados, marque-as com @Entity
-* 3 - Selecione o nome das tabelas que essas entidades representação com @Table(name = "NomeDaTabela")
-* 4 - As colunas serão os atributos das entidades
-* 5 - Caso tenha dúvidas sobre quais anotações usar nesta etapa, acesse: [Outros Relacionamentos](/teoria/OutrosRelacionamentos.md)
+* 1 - Crie uma classe para cada uma das **entidades** do seu sistema
+* 2 - Para que cada uma dessas entidades seja mapeada para uma tabela no banco de dados, marque-as com **@Entity**
+* 3 - Selecione o nome das tabelas que essas entidades representação com **@Table(name = "NomeDaTabela")**
+* 4 - As **colunas** serão os atributos das entidades
+* 5 - Caso tenha dúvidas sobre quais **anotações** usar nesta etapa, acesse: [Outros Relacionamentos](/teoria/OutrosRelacionamentos.md)
 
 
 ---
