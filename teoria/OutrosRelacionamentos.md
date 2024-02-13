@@ -6,15 +6,16 @@
 
 Já sabemos que, ao criar uma entidade, esta entidade será mapeada para uma tabela
 no banco de dados. As colunas serão do tipo de cada um dos atributos. Porém, e quando
-algum atributo for de um tipo que não seja primitivo ou derivado de um primitivo?
+o atributo não for primitivo e nem derivado de um primitivo?
 
-Os tipos primitivos e seus derivados e alguns tipos especiais como LocalDate são mapeados para
+Os tipos primitivos, seus derivados e alguns tipos especiais como LocalDate são mapeados para
 colunas sem necessidade de configuração extra. Porém, outros tipos, como enumeradores, necessitam de 
 uma configuração por anotação. Para enumeradores, basta usar:
 
 ```java
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+
 @Enumerated(EnumType.STRING)
 private AlgumEnum meuEnum;
 ```
