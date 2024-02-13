@@ -13,10 +13,10 @@
 > Para detalhes, leia: [ConfigurandoJPA](/teoria/ConfigurandoJPA.md)
 
 * 1 - Crie um projeto Java com o gerenciador de dependências Maven
-* 2 - No diretório **resources**, crie outro diretório, intitulado de **META-INF**
-* 3 - Neste novo diretório, crie o arquivo **persistence.xml**
-* 4 - Configure o arquivo **persistence.xml**
-* 5 - Em seguida, adicione as dependências necessárias no **pom.xml**
+* 2 - Configure o arquivo pom.xml, adicionando as dependências necessárias
+* 3 - No diretório **resources**, crie outro diretório, intitulado de **META-INF**
+* 4 - Neste novo diretório, crie o arquivo **persistence.xml**
+* 5 - Configure o arquivo **persistence.xml**
 
 
 ---
