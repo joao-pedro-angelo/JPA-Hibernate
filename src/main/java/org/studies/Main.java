@@ -16,13 +16,13 @@ import java.util.Scanner;
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
-    private static EntityManager entityManager = CreateEntityManager.createEntityManager();
+    private static final EntityManager entityManager = CreateEntityManager.createEntityManager();
     private static final ServiceCategory serviceCategory = new ServiceCategory(new CategoryDAO(entityManager), entityManager);
     private static final ServiceProduct serviceProduct = new ServiceProduct(new ProductDAO(entityManager), entityManager);
 
     public static void main(String[] args) {
         int opcao = exibirMenu();
-        while (opcao != 9){
+        while (opcao != 0){
             try{
                 switch (opcao){
                     case 1:
@@ -47,7 +47,13 @@ public class Main {
                         atualizarCategoria();
                         break;
                     case 8:
-                        atualizarProduto();
+                        atualizarQuantidadeProduto();
+                        break;
+                    case 9:
+                        atualizarNomeProduto();
+                        break;
+                    case 10:
+                        atualizarPrecoProduto();
                         break;
                 }
             } catch (RegraDeNegocioException e){
@@ -58,33 +64,47 @@ public class Main {
         System.out.println("Finalizando aplicação...");
     }
 
-    private static void atualizarProduto() {
+    private static void atualizarPrecoProduto(){
         System.out.println("\n");
-        System.out.println("ATUALIZAR PRODUTO: ");
+        System.out.println("ATUALIZAR PREÇO - PRODUTO");
         System.out.println("Nome do produto: ");
-        String actualName = scanner.nextLine();
+        String nameProduct = scanner.nextLine();
+        Product product = serviceProduct.readProduct(nameProduct);
 
-        Product product = serviceProduct.readProduct(actualName);
-
-        System.out.println("Novo nome (pode ser o mesmo): ");
-        String newName = scanner.nextLine();
-        System.out.println("Quantidade no estoque: ");
-        Integer quantity = Integer.parseInt(scanner.nextLine());
-        System.out.println("Descrição do produto: ");
-        String description = scanner.nextLine();
-        System.out.println("Valor: ");
-        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.nextLine()));
-        System.out.println("Nome da categoria: ");
-        String categoryName = scanner.nextLine();
-        Category category = serviceCategory.readCategory(categoryName);
-
-        product.setName(newName);
-        product.setQuantity(quantity);
-        product.setDescription(description);
+        System.out.println("Preço do produto: ");
+        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.next()));
         product.setValue(value);
-        product.setCategory(category);
+    }
 
+    private static void atualizarNomeProduto(){
+        System.out.println("\n");
+        System.out.println("ATUALIZAR NOME - PRODUTO");
+        System.out.println("Nome do produto: ");
+        String nameProduct = scanner.nextLine();
+        Product product = serviceProduct.readProduct(nameProduct);
+
+        System.out.println("Novo nome: ");
+        String name = scanner.nextLine();
+        product.setName(name);
         serviceProduct.updateProduct(product);
+        System.out.println("Fim da operação!");
+    }
+
+    private static void atualizarQuantidadeProduto() {
+        System.out.println("\n");
+        System.out.println("ATUALIZAR QUANTIDADE - PRODUTO");
+        System.out.println("Nome do produto: ");
+        String nameProduct = scanner.nextLine();
+        Product product = serviceProduct.readProduct(nameProduct);
+
+        System.out.println("Nova quantidade: ");
+        try{
+            int quantidade = Integer.parseInt(scanner.nextLine());
+            product.setQuantity(quantidade);
+            serviceProduct.updateProduct(product);
+        } catch (NumberFormatException e){
+            System.out.println("Quantidade inválida!");
+        } System.out.println("Fim da operação. Retornando ao menu principal...");
     }
 
     private static void atualizarCategoria() {
@@ -178,6 +198,7 @@ public class Main {
     private static int exibirMenu(){
         System.out.println("""
                 CLASSIC BANK - ESCOLHA UMA OPÇÃO:
+                0 - Sair
                 1 - Criar categoria
                 2 - Criar produto
                 3 - Remover categoria
@@ -185,14 +206,15 @@ public class Main {
                 5 - Exibir categoria
                 6 - Exibir produto
                 7 - Atualizar categoria
-                8 - Atualizar produto
-                9 - Sair
+                8 - Atualizar quantidade - produto
+                9 - Atualizar nome - produto
+               10 - Atualizar preço - produto
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e){
             System.out.println("Entrada inválida...");
-            return 9;
+            return 0;
         }
     }
 
