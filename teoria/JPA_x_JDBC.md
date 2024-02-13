@@ -10,6 +10,7 @@
 > Especificação para acesso a banco de dados relacionais em Java
 
 A API JDBC é uma camada de abstração do protocolo de comunicação com o banco de dados.
+A JDBC é uma especificação e os Drivers que utilziamos na configuração, são as implementações desta API.
 
 Exemplo de código que utiliza a API JDBC:
 ```java
