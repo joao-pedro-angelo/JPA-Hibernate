@@ -57,6 +57,12 @@ public class Main {
                     case 10:
                         atualizarPrecoProduto();
                         break;
+                    case 11:
+                        listarTodasCategorias();
+                        break;
+                    case 12:
+                        listarTodosProdutos();
+                        break;
                 }
             } catch (RegraDeNegocioException e){
                 System.out.println("Erro: " + e.getMessage());
@@ -64,6 +70,16 @@ public class Main {
             opcao = exibirMenu();
         }
         System.out.println("Finalizando aplicação...");
+    }
+
+    private static void listarTodosProdutos(){
+        System.out.println("\n");
+        System.out.println("Listar todos os produtos: ");
+    }
+
+    private static void listarTodasCategorias(){
+        System.out.println("\n");
+        System.out.println("Listar todas as categorias: ");
     }
 
     private static void atualizarPrecoProduto(){
@@ -253,6 +269,8 @@ public class Main {
                 8 - Atualizar quantidade - produto
                 9 - Atualizar nome - produto
                10 - Atualizar preço - produto
+               11 - Listar todos protudos
+               12 - Listar todas categorias
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());

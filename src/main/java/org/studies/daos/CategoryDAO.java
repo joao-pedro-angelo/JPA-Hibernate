@@ -3,6 +3,7 @@ package org.studies.daos;
 import org.studies.entities.Category;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CategoryDAO {
 
@@ -28,5 +29,10 @@ public class CategoryDAO {
 
     public Category readCategory(String key){
         return this.entityManager.find(Category.class, key);
+    }
+
+    public List<Category> readCategories(){
+        String jpql = "SELECT c FROM Category c";
+        return this.entityManager.createQuery(jpql, Category.class).getResultList();
     }
 }

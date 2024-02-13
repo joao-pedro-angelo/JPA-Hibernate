@@ -4,6 +4,7 @@ import org.studies.daos.ProductDAO;
 import org.studies.entities.Product;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ServiceProduct {
 
@@ -42,5 +43,18 @@ public class ServiceProduct {
         this.entityManager.getTransaction().commit();
         this.entityManager.close();
         return  product;
+    }
+
+    public String readAllProducts(){
+        StringBuilder result = new StringBuilder();
+        this.entityManager.getTransaction().begin();
+        List<Product> products = this.productDAO.readProducts();
+        this.entityManager.getTransaction().commit();
+        this.entityManager.close();
+
+        for (Product product : products){
+            result.append(product.toString());
+        }
+        return result.toString();
     }
 }

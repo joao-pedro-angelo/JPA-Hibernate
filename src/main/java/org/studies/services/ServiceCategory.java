@@ -4,6 +4,7 @@ import org.studies.daos.CategoryDAO;
 import org.studies.entities.Category;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ServiceCategory {
 
@@ -42,5 +43,18 @@ public class ServiceCategory {
         this.entityManager.getTransaction().commit();
         this.entityManager.close();
         return  category;
+    }
+
+    public String readAllCategories(){
+        StringBuilder result = new StringBuilder();
+        this.entityManager.getTransaction().begin();
+        List<Category> categories = this.categoryDAO.readCategories();
+        this.entityManager.getTransaction().commit();
+        this.entityManager.close();
+
+        for (Category category : categories){
+            result.append(category.toString());
+        }
+        return result.toString();
     }
 }
