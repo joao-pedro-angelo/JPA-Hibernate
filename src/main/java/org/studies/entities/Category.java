@@ -1,7 +1,5 @@
 package org.studies.entities;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +7,6 @@ import javax.persistence.*;
 public class Category {
 
     @Id
-    @NotNull
     private String name;
 
     public Category(){}

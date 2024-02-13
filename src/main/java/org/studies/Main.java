@@ -8,6 +8,8 @@ import org.studies.entities.Product;
 import org.studies.exception.RegraDeNegocioException;
 import org.studies.services.ServiceCategory;
 import org.studies.services.ServiceProduct;
+import org.studies.validation.ValidationCategory;
+import org.studies.validation.ValidationProduct;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -67,13 +69,19 @@ public class Main {
     private static void atualizarPrecoProduto(){
         System.out.println("\n");
         System.out.println("ATUALIZAR PREÇO - PRODUTO");
+
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
+        ValidationProduct.validationName(nameProduct);
         Product product = serviceProduct.readProduct(nameProduct);
 
         System.out.println("Preço do produto: ");
         BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.next()));
+        ValidationProduct.validationValue(value);
         product.setValue(value);
+        serviceProduct.updateProduct(product);
+
+        System.out.println("Preço atualizado!");
     }
 
     private static void atualizarNomeProduto(){
@@ -93,13 +101,16 @@ public class Main {
     private static void atualizarQuantidadeProduto() {
         System.out.println("\n");
         System.out.println("ATUALIZAR QUANTIDADE - PRODUTO");
+
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
+        ValidationProduct.validationName(nameProduct);
         Product product = serviceProduct.readProduct(nameProduct);
 
         System.out.println("Nova quantidade: ");
         try{
             int quantidade = Integer.parseInt(scanner.nextLine());
+            ValidationProduct.validationQuantity(quantidade);
             product.setQuantity(quantidade);
             serviceProduct.updateProduct(product);
         } catch (NumberFormatException e){
@@ -110,40 +121,48 @@ public class Main {
     private static void atualizarCategoria() {
         System.out.println("\n");
         System.out.println("ATUALIZAR CATEGORIA: ");
+
         System.out.println("Nome atual da categoria: ");
         String actualName = scanner.nextLine();
         System.out.println("Novo nome: ");
         String newName = scanner.nextLine();
+        ValidationCategory.validationCategory(newName);
 
         Category category = serviceCategory.readCategory(actualName);
         category.setName(newName);
         serviceCategory.updateCategory(category);
+        System.out.println("Atualização feita!");
     }
 
     private static void exibirProduto() {
         System.out.println("\n");
         System.out.println("EXIBIR PRODUTO: ");
+
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
-
+        ValidationProduct.validationName(nameProduct);
+        System.out.println("Produto: ");
         System.out.println(serviceProduct.readProduct(nameProduct));
     }
 
     private static void exibirCategoria() {
         System.out.println("\n");
         System.out.println("EXIBIR CATEGORIA: ");
+
         System.out.println("Nome da categoria: ");
         String categoryName = scanner.nextLine();
-
+        ValidationCategory.validationCategory(categoryName);
+        System.out.println("Categoria: ");
         System.out.println(serviceCategory.readCategory(categoryName));
     }
 
     private static void removerProduto() {
         System.out.println("\n");
         System.out.println("REMOVER PRODUTO: ");
+
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
-
+        ValidationProduct.validationName(nameProduct);
         Product product = serviceProduct.readProduct(nameProduct);
         serviceProduct.removeProduct(product);
 
@@ -153,9 +172,10 @@ public class Main {
     private static void removerCategoria() {
         System.out.println("\n");
         System.out.println("REMOVER CATEGORIA: ");
+
         System.out.println("Nome da categoria: ");
         String name = scanner.nextLine();
-
+        ValidationCategory.validationCategory(name);
         Category category = serviceCategory.readCategory(name);
         serviceCategory.removeCategory(category);
 
@@ -165,16 +185,21 @@ public class Main {
     private static void criarProduto() {
         System.out.println("\n");
         System.out.println("CRIAR PRODUTO: ");
+
         System.out.println("Nome do produto: ");
         String nameProduct = scanner.nextLine();
+        ValidationProduct.validationName(nameProduct);
         System.out.println("Quantidade no estoque: ");
-        Integer quantity = Integer.parseInt(scanner.nextLine());
+        int quantity = Integer.parseInt(scanner.nextLine());
+        ValidationProduct.validationQuantity(quantity);
         System.out.println("Descrição do produto: ");
         String description = scanner.nextLine();
         System.out.println("Valor: ");
         BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.nextLine()));
+        ValidationProduct.validationValue(value);
         System.out.println("Nome da categoria: ");
         String categoryName = scanner.nextLine();
+        ValidationCategory.validationCategory(categoryName);
         Category category = serviceCategory.readCategory(categoryName);
 
         Product product = new Product(nameProduct, quantity, description, value, category);
@@ -188,7 +213,7 @@ public class Main {
         System.out.println("CRIAR CATEGORIA: ");
         System.out.println("Nome da categoria: ");
         String nameCategory = scanner.nextLine();
-
+        ValidationCategory.validationCategory(nameCategory);
         Category category = new Category(nameCategory);
         serviceCategory.createCategory(category);
 
