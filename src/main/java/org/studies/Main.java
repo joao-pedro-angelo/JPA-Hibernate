@@ -75,11 +75,13 @@ public class Main {
     private static void listarTodosProdutos(){
         System.out.println("\n");
         System.out.println("Listar todos os produtos: ");
+        System.out.println(serviceProduct.readAllProducts());
     }
 
     private static void listarTodasCategorias(){
         System.out.println("\n");
         System.out.println("Listar todas as categorias: ");
+        System.out.println(serviceCategory.readAllCategories());
     }
 
     private static void atualizarPrecoProduto(){

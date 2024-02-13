@@ -55,6 +55,6 @@ public class Product {
                 ", description='" + this.description + '\'' +
                 ", value=" + this.value +
                 ", category=" + this.category +
-                '}';
+                '}' + "\n";
     }
 }
