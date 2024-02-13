@@ -38,8 +38,8 @@ Mesmo esta API sendo uma abstração que visa causar impacto mínimo ao trocar d
 a JDBC ainda resulta em um alto acoplamento entre a aplicação e o banco de dados. Mesmo que algum design patterns
 seja utilizado, como o DAO Pattern, ainda há o acoplamento elevado entre a aplicação e o banco de dados.
 
-Logo, qualquer mudança, mesmo que uma simples troca no nome de determinada coluna, gera um alto impacto na aplicação,
-resultado em mudanças em diversas partes do código.
+Logo, qualquer mudança, mesmo que seja uma simples troca no nome de determinada coluna, gera um alto impacto na aplicação,
+resultando em mudanças em diversas partes do código.
 
 Veja no código acima, que é necessário conhecer a linguagem de busca estruturada, SQL,
 e além disso, o acesso ao banco de dados é feito de forma direta, tendo que utilizar nome da tabela,
@@ -51,7 +51,7 @@ e além disso, o acesso ao banco de dados é feito de forma direta, tendo que ut
 
 > Especificação mais moderna para acesso a banco de dados relacionais em Java
 
-A JPA surge como uma alternativa à API JDBC, de modo que resulte em um acoplamento menor
+A JPA surge como uma alternativa à API JDBC, de modo que resulta em um acoplamento menor
 entre a aplicação e o banco de dados. Além disso, com a JPA, o código fica muito menos verboso, sendo mais
 prático de ser utilizado.
 
