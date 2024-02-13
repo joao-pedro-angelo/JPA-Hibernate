@@ -44,4 +44,4 @@ public class Produto {
 Utilizamos as anotações para indicar à JPA o que ela deve fazer e como o
 mapeamento deve ser realizado.
 
-O que foi feito acima é o que é conhecido como Mapeamento Objeto-Relacional (ORM).
+**Mapeamento Objeto-Relacional (ORM)** em prática.
