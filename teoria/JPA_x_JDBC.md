@@ -36,7 +36,7 @@ Exemplo de código que utiliza a API JDBC:
 ```
 
 Mesmo esta API sendo uma abstração que visa causar impacto mínimo ao trocar de banco de dados,
-a JDBC ainda resulta em um alto acoplamento entre a aplicação e o banco de dados. Mesmo que algum design patterns
+a JDBC ainda resulta em um alto acoplamento entre a aplicação e o banco de dados. Mesmo que algum design pattern
 seja utilizado, como o DAO Pattern, ainda há o acoplamento elevado entre a aplicação e o banco de dados.
 
 Logo, qualquer mudança, mesmo que seja uma simples troca no nome de determinada coluna, gera um alto impacto na aplicação,
