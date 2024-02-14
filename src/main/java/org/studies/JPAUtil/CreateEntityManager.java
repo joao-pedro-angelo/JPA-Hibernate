@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Classe Utilitária para criar um entityManager
+ * Classe Utilitária para criar uma instância de EntityManager
  *
  * @author carneiroangelojoaopedro@gmail.com
  */

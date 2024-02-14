@@ -3,7 +3,7 @@ package org.studies.validation;
 import org.studies.exception.RegraDeNegocioException;
 
 /**
- * Valida nome da Categoria
+ * Valida informações referentes à Categoria
  *
  * @author carneiroangelojoaopedro@gmail.com
  */

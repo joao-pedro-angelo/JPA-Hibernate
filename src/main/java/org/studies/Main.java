@@ -1,3 +1,9 @@
+/*
+ * Classe de interação com o usuário.
+ * Fornece opções para criar, deletar, atualizar e ler informações dos produtos e categorias.
+ * Utiliza serviços e DAOs para interagir com o banco de dados.
+ * @author carneiroangelojoaopedro@gmail.com
+ */
 package org.studies;
 
 import org.studies.JPAUtil.CreateEntityManager;
@@ -15,26 +21,20 @@ import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-/**
- * Classe de interação com usuário
- * Opções para Criar, Deletar, Atualizar e Ler informações dos produtos e categorias
- *
- * @author carneiroangelojoaopedro@gmail.com
- */
 public class Main {
 
-    // Objeto Scanner para input
+    // Objeto Scanner para entrada de dados do usuário
     private static final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
-    // EntityManager para operações na base de dados
+    // EntityManager para operações no banco de dados
     private static final EntityManager entityManager = CreateEntityManager.createEntityManager();
-    // Instância de Serviço Categoria
+    // Serviço para operações relacionadas a categorias
     private static final ServiceCategory serviceCategory = new ServiceCategory(new CategoryDAO(entityManager), entityManager);
-    // Instância de Serviço Produto
+    // Serviço para operações relacionadas a produtos
     private static final ServiceProduct serviceProduct = new ServiceProduct(new ProductDAO(entityManager), entityManager);
 
     /**
-     * Método para controlar a escolha de qual método o usuário deseja executar
-      * @param args command-line arguments
+     * Método principal para controlar as ações do usuário.
+     * @param args argumentos da linha de comando
      */
     public static void main(String[] args) {
         int opcao = exibirMenu();
@@ -89,7 +89,7 @@ public class Main {
     }
 
     /**
-     * Exibe todos os produtos cadastrados na base de dados
+     * Exibe todos os produtos cadastrados na base de dados.
      */
     private static void listarTodosProdutos(){
         System.out.println("\n");
@@ -98,7 +98,7 @@ public class Main {
     }
 
     /**
-     * Exibe todas as categorias cadastradas na base de dados
+     * Exibe todas as categorias cadastradas na base de dados.
      */
     private static void listarTodasCategorias(){
         System.out.println("\n");
@@ -107,7 +107,7 @@ public class Main {
     }
 
     /**
-     * Atualiza o preço de um produto já cadastrado na base de dados
+     * Atualiza o preço de um produto existente na base de dados.
      */
     private static void atualizarPrecoProduto(){
         System.out.println("\n");
@@ -130,7 +130,7 @@ public class Main {
     }
 
     /**
-     * Atualiza o nome de um produto já cadastrado na base de dados
+     * Atualiza o nome de um produto existente na base de dados.
      */
     private static void atualizarNomeProduto(){
         System.out.println("\n");
@@ -150,7 +150,7 @@ public class Main {
     }
 
     /**
-     * Atualiza a quantidade de um produto já cadastrado na base de dados
+     * Atualiza a quantidade de um produto existente na base de dados.
      */
     private static void atualizarQuantidadeProduto() {
         System.out.println("\n");
@@ -175,7 +175,7 @@ public class Main {
     }
 
     /**
-     * Atualiza o nome de uma categoria já cadastrada na base de dados
+     * Atualiza o nome de uma categoria existente na base de dados.
      */
     private static void atualizarCategoria() {
         System.out.println("\n");
@@ -195,7 +195,7 @@ public class Main {
     }
 
     /**
-     * Exibe um produto. O identificador de um produto é o seu nome
+     * Exibe as informações de um produto.
      */
     private static void exibirProduto() {
         System.out.println("\n");
@@ -210,7 +210,7 @@ public class Main {
     }
 
     /**
-     * Exibe uma categoria. O identificador da categoria é o seu nome
+     * Exibe as informações de uma categoria.
      */
     private static void exibirCategoria() {
         System.out.println("\n");
@@ -225,7 +225,7 @@ public class Main {
     }
 
     /**
-     * Remove um produto
+     * Remove um produto da base de dados.
      */
     private static void removerProduto() {
         System.out.println("\n");
@@ -242,7 +242,7 @@ public class Main {
     }
 
     /**
-     * Remove uma categoria
+     * Remove uma categoria da base de dados.
      */
     private static void removerCategoria() {
         System.out.println("\n");
@@ -259,7 +259,7 @@ public class Main {
     }
 
     /**
-     * Cria um produto
+     * Cria um novo produto na base de dados.
      */
     private static void criarProduto() {
         System.out.println("\n");
@@ -293,7 +293,7 @@ public class Main {
     }
 
     /**
-     * Cria uma categoria
+     * Cria uma nova categoria na base de dados.
      */
     private static void criarCategoria() {
         System.out.println("\n");
@@ -310,8 +310,8 @@ public class Main {
     }
 
     /**
-     * Exibe o menu
-     * @return escolha do usuário
+     * Exibe o menu de opções para o usuário.
+     * @return A escolha do usuário.
      */
     private static int exibirMenu(){
         System.out.println("""
@@ -327,8 +327,8 @@ public class Main {
                 8 - Atualizar quantidade - produto
                 9 - Atualizar nome - produto
                10 - Atualizar preço - produto
-               11 - Listar todos protudos
-               12 - Listar todas categorias
+               11 - Listar todos os produtos
+               12 - Listar todas as categorias
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());
