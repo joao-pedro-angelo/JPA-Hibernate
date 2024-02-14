@@ -15,13 +15,27 @@ import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+/**
+ * Classe de interação com usuário
+ * Opções para Criar, Deletar, Atualizar e Ler informações dos produtos e categorias
+ *
+ * @author carneiroangelojoaopedro@gmail.com
+ */
 public class Main {
 
+    // Objeto Scanner para input
     private static final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+    // EntityManager para operações na base de dados
     private static final EntityManager entityManager = CreateEntityManager.createEntityManager();
+    // Instância de Serviço Categoria
     private static final ServiceCategory serviceCategory = new ServiceCategory(new CategoryDAO(entityManager), entityManager);
+    // Instância de Serviço Produto
     private static final ServiceProduct serviceProduct = new ServiceProduct(new ProductDAO(entityManager), entityManager);
 
+    /**
+     * Método para controlar a escolha de qual método o usuário deseja executar
+      * @param args command-line arguments
+     */
     public static void main(String[] args) {
         int opcao = exibirMenu();
         while (opcao != 0){
@@ -74,18 +88,27 @@ public class Main {
         System.out.println("Finalizando aplicação...");
     }
 
+    /**
+     * Exibe todos os produtos cadastrados na base de dados
+     */
     private static void listarTodosProdutos(){
         System.out.println("\n");
         System.out.println("Listar todos os produtos: ");
         System.out.println(serviceProduct.readAllProducts());
     }
 
+    /**
+     * Exibe todas as categorias cadastradas na base de dados
+     */
     private static void listarTodasCategorias(){
         System.out.println("\n");
         System.out.println("Listar todas as categorias: ");
         System.out.println(serviceCategory.readAllCategories());
     }
 
+    /**
+     * Atualiza o preço de um produto já cadastrado na base de dados
+     */
     private static void atualizarPrecoProduto(){
         System.out.println("\n");
         System.out.println("ATUALIZAR PREÇO - PRODUTO");
@@ -106,6 +129,9 @@ public class Main {
         System.out.println("Preço atualizado!");
     }
 
+    /**
+     * Atualiza o nome de um produto já cadastrado na base de dados
+     */
     private static void atualizarNomeProduto(){
         System.out.println("\n");
         System.out.println("ATUALIZAR NOME - PRODUTO");
@@ -123,6 +149,9 @@ public class Main {
         System.out.println("Fim da operação!");
     }
 
+    /**
+     * Atualiza a quantidade de um produto já cadastrado na base de dados
+     */
     private static void atualizarQuantidadeProduto() {
         System.out.println("\n");
         System.out.println("ATUALIZAR QUANTIDADE - PRODUTO");
@@ -145,6 +174,9 @@ public class Main {
         System.out.println("Fim da operação. Retornando ao menu principal...");
     }
 
+    /**
+     * Atualiza o nome de uma categoria já cadastrada na base de dados
+     */
     private static void atualizarCategoria() {
         System.out.println("\n");
         System.out.println("ATUALIZAR CATEGORIA: ");
@@ -162,6 +194,9 @@ public class Main {
         System.out.println("Atualização feita!");
     }
 
+    /**
+     * Exibe um produto. O identificador de um produto é o seu nome
+     */
     private static void exibirProduto() {
         System.out.println("\n");
         System.out.println("EXIBIR PRODUTO: ");
@@ -174,6 +209,9 @@ public class Main {
         System.out.println(serviceProduct.readProduct(nameProduct));
     }
 
+    /**
+     * Exibe uma categoria. O identificador da categoria é o seu nome
+     */
     private static void exibirCategoria() {
         System.out.println("\n");
         System.out.println("EXIBIR CATEGORIA: ");
@@ -186,6 +224,9 @@ public class Main {
         System.out.println(serviceCategory.readCategory(categoryName));
     }
 
+    /**
+     * Remove um produto
+     */
     private static void removerProduto() {
         System.out.println("\n");
         System.out.println("REMOVER PRODUTO: ");
@@ -200,6 +241,9 @@ public class Main {
         System.out.println("Remoção bem sucedida!");
     }
 
+    /**
+     * Remove uma categoria
+     */
     private static void removerCategoria() {
         System.out.println("\n");
         System.out.println("REMOVER CATEGORIA: ");
@@ -214,6 +258,9 @@ public class Main {
         System.out.println("Remoção bem sucedida!");
     }
 
+    /**
+     * Cria um produto
+     */
     private static void criarProduto() {
         System.out.println("\n");
         System.out.println("CRIAR PRODUTO: ");
@@ -245,6 +292,9 @@ public class Main {
         System.out.println("Produto criado com sucesso!");
     }
 
+    /**
+     * Cria uma categoria
+     */
     private static void criarCategoria() {
         System.out.println("\n");
         System.out.println("CRIAR CATEGORIA: ");
@@ -259,6 +309,10 @@ public class Main {
         System.out.println("Categoria criada com sucesso!");
     }
 
+    /**
+     * Exibe o menu
+     * @return escolha do usuário
+     */
     private static int exibirMenu(){
         System.out.println("""
                 CLASSIC BANK - ESCOLHA UMA OPÇÃO:
