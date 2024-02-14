@@ -1,6 +1,5 @@
 /*
- * Classe de interação com o usuário.
- * Fornece opções para criar, deletar, atualizar e ler informações dos produtos e categorias.
+ * Classe responsável por interagir com o usuário, oferecendo opções para manipular produtos e categorias.
  * Utiliza serviços e DAOs para interagir com o banco de dados.
  * @author carneiroangelojoaopedro@gmail.com
  */
@@ -34,6 +33,7 @@ public class Main {
 
     /**
      * Método principal para controlar as ações do usuário.
+     * Oferece um menu interativo para o usuário realizar operações no banco de dados.
      * @param args argumentos da linha de comando
      */
     public static void main(String[] args) {
@@ -81,6 +81,7 @@ public class Main {
 
     /**
      * Exibe todos os produtos cadastrados na base de dados.
+     * Caso não haja produtos cadastrados, a lista será vazia.
      */
     private static void listarTodosProdutos(){
         System.out.println("\n");
@@ -90,6 +91,7 @@ public class Main {
 
     /**
      * Exibe todas as categorias cadastradas na base de dados.
+     * Caso não haja categorias cadastradas, a lista será vazia.
      */
     private static void listarTodasCategorias(){
         System.out.println("\n");
@@ -99,6 +101,8 @@ public class Main {
 
     /**
      * Atualiza o preço de um produto existente na base de dados.
+     * Caso o produto não exista, uma mensagem de erro será exibida.
+     * Caso o valor informado seja inválido, uma mensagem de erro será exibida.
      */
     private static void atualizarPrecoProduto(){
         System.out.println("\n");
@@ -122,6 +126,8 @@ public class Main {
 
     /**
      * Atualiza a quantidade de um produto existente na base de dados.
+     * Caso o produto não exista, uma mensagem de erro será exibida.
+     * Caso a quantidade informada seja inválida, uma mensagem de erro será exibida.
      */
     private static void atualizarQuantidadeProduto() {
         System.out.println("\n");
@@ -147,6 +153,7 @@ public class Main {
 
     /**
      * Exibe as informações de um produto.
+     * Caso o produto não exista, uma mensagem de erro será exibida.
      */
     private static void exibirProduto() {
         System.out.println("\n");
@@ -162,6 +169,7 @@ public class Main {
 
     /**
      * Exibe as informações de uma categoria.
+     * Caso a categoria não exista, uma mensagem de erro será exibida.
      */
     private static void exibirCategoria() {
         System.out.println("\n");
@@ -177,6 +185,7 @@ public class Main {
 
     /**
      * Remove um produto da base de dados.
+     * Caso o produto não exista, uma mensagem de erro será exibida.
      */
     private static void removerProduto() {
         System.out.println("\n");
@@ -194,6 +203,8 @@ public class Main {
 
     /**
      * Cria um novo produto na base de dados.
+     * Caso a categoria informada não exista, uma mensagem de erro será exibida.
+     * Caso algum dado informado seja inválido, uma mensagem de erro será exibida.
      */
     private static void criarProduto() {
         System.out.println("\n");
@@ -228,6 +239,7 @@ public class Main {
 
     /**
      * Cria uma nova categoria na base de dados.
+     * Caso o nome da categoria seja inválido, uma mensagem de erro será exibida.
      */
     private static void criarCategoria() {
         System.out.println("\n");
