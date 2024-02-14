@@ -31,15 +31,6 @@ public class CategoryDAO {
     }
 
     /**
-     * Método para atualizar uma categoria existente no banco de dados.
-     * @param category A categoria a ser atualizada.
-     */
-    public void updateCategory(Category category){
-        this.entityManager.merge(category);
-        this.entityManager.flush();
-    }
-
-    /**
      * Método para remover uma categoria do banco de dados.
      * @param category A categoria a ser removida.
      */

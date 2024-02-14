@@ -60,21 +60,18 @@ public class Main {
                         exibirProduto();
                         break;
                     case 7:
-                        atualizarCategoria();
-                        break;
-                    case 8:
                         atualizarQuantidadeProduto();
                         break;
-                    case 9:
+                    case 8:
                         atualizarNomeProduto();
                         break;
-                    case 10:
+                    case 9:
                         atualizarPrecoProduto();
                         break;
-                    case 11:
+                    case 10:
                         listarTodosProdutos();
                         break;
-                    case 12:
+                    case 11:
                         listarTodasCategorias();
                         break;
                 }
@@ -172,26 +169,6 @@ public class Main {
         }
 
         System.out.println("Fim da operação. Retornando ao menu principal...");
-    }
-
-    /**
-     * Atualiza o nome de uma categoria existente na base de dados.
-     */
-    private static void atualizarCategoria() {
-        System.out.println("\n");
-        System.out.println("ATUALIZAR CATEGORIA: ");
-
-        System.out.println("Nome atual da categoria: ");
-        String actualName = scanner.nextLine();
-        System.out.println("Novo nome: ");
-        String newName = scanner.nextLine();
-        ValidationCategory.validationCategory(newName);
-
-        Category category = serviceCategory.readCategory(actualName);
-        category.setName(newName);
-        serviceCategory.updateCategory(category);
-
-        System.out.println("Atualização feita!");
     }
 
     /**
@@ -323,12 +300,11 @@ public class Main {
                 4 - Remover produto
                 5 - Exibir categoria
                 6 - Exibir produto
-                7 - Atualizar categoria
-                8 - Atualizar quantidade - produto
-                9 - Atualizar nome - produto
-               10 - Atualizar preço - produto
-               11 - Listar todos os produtos
-               12 - Listar todas as categorias
+                7 - Atualizar quantidade - produto
+                8 - Atualizar nome - produto
+                9 - Atualizar preço - produto
+               10 - Listar todos os produtos
+               11 - Listar todas as categorias
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());
