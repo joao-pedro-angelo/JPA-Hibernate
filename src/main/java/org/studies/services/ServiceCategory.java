@@ -37,16 +37,6 @@ public class ServiceCategory {
     }
 
     /*
-     * Método para remover uma categoria do banco de dados.
-     * @param category A categoria a ser removida.
-     */
-    public void removeCategory(Category category){
-        this.entityManager.getTransaction().begin();
-        this.categoryDAO.removeCategory(category);
-        this.entityManager.getTransaction().commit();
-    }
-
-    /*
      * Método para ler uma categoria do banco de dados com base em sua chave primária.
      * @param key A chave primária da categoria a ser lida.
      * @return A categoria encontrada ou null se não existir.

@@ -31,15 +31,6 @@ public class CategoryDAO {
     }
 
     /**
-     * Método para remover uma categoria do banco de dados.
-     * @param category A categoria a ser removida.
-     */
-    public void removeCategory(Category category){
-        category = this.entityManager.merge(category);
-        this.entityManager.remove(category);
-    }
-
-    /**
      * Método para buscar uma categoria no banco de dados com base em sua chave primária.
      * @param key A chave primária da categoria a ser buscada.
      * @return A categoria encontrada ou null se não existir.

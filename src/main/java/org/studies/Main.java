@@ -48,30 +48,27 @@ public class Main {
                         criarProduto();
                         break;
                     case 3:
-                        removerCategoria();
-                        break;
-                    case 4:
                         removerProduto();
                         break;
-                    case 5:
+                    case 4:
                         exibirCategoria();
                         break;
-                    case 6:
+                    case 5:
                         exibirProduto();
                         break;
-                    case 7:
+                    case 6:
                         atualizarQuantidadeProduto();
                         break;
-                    case 8:
+                    case 7:
                         atualizarNomeProduto();
                         break;
-                    case 9:
+                    case 8:
                         atualizarPrecoProduto();
                         break;
-                    case 10:
+                    case 9:
                         listarTodosProdutos();
                         break;
-                    case 11:
+                    case 10:
                         listarTodasCategorias();
                         break;
                 }
@@ -219,23 +216,6 @@ public class Main {
     }
 
     /**
-     * Remove uma categoria da base de dados.
-     */
-    private static void removerCategoria() {
-        System.out.println("\n");
-        System.out.println("REMOVER CATEGORIA: ");
-
-        System.out.println("Nome da categoria: ");
-        String name = scanner.nextLine();
-        ValidationCategory.validationCategory(name);
-
-        Category category = serviceCategory.readCategory(name);
-        serviceCategory.removeCategory(category);
-
-        System.out.println("Remoção bem sucedida!");
-    }
-
-    /**
      * Cria um novo produto na base de dados.
      */
     private static void criarProduto() {
@@ -296,15 +276,14 @@ public class Main {
                 0 - Sair
                 1 - Criar categoria
                 2 - Criar produto
-                3 - Remover categoria
-                4 - Remover produto
-                5 - Exibir categoria
-                6 - Exibir produto
-                7 - Atualizar quantidade - produto
-                8 - Atualizar nome - produto
-                9 - Atualizar preço - produto
-               10 - Listar todos os produtos
-               11 - Listar todas as categorias
+                3 - Remover produto
+                4 - Exibir categoria
+                5 - Exibir produto
+                6 - Atualizar quantidade - produto
+                7 - Atualizar nome - produto
+                8 - Atualizar preço - produto
+                9 - Listar todos os produtos
+               10 - Listar todas as categorias
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());
