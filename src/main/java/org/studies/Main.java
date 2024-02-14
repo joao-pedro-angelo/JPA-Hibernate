@@ -97,7 +97,7 @@ public class Main {
         Product product = serviceProduct.readProduct(nameProduct);
 
         System.out.println("Preço do produto: ");
-        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.next()));
+        BigDecimal value = BigDecimal.valueOf(Double.parseDouble(scanner.nextLine()));
         ValidationProduct.validationValue(value);
 
         product.setValue(value);
@@ -230,7 +230,7 @@ public class Main {
         String description = scanner.nextLine();
 
         System.out.println("Valor: ");
-        BigDecimal value = BigDecimal.valueOf(Integer.parseInt(scanner.nextLine()));
+        BigDecimal value = BigDecimal.valueOf(Double.parseDouble(scanner.nextLine()));
         ValidationProduct.validationValue(value);
 
         System.out.println("Nome da categoria: ");
