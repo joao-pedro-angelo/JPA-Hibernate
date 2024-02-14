@@ -60,15 +60,12 @@ public class Main {
                         atualizarQuantidadeProduto();
                         break;
                     case 7:
-                        atualizarNomeProduto();
-                        break;
-                    case 8:
                         atualizarPrecoProduto();
                         break;
-                    case 9:
+                    case 8:
                         listarTodosProdutos();
                         break;
-                    case 10:
+                    case 9:
                         listarTodasCategorias();
                         break;
                 }
@@ -121,26 +118,6 @@ public class Main {
         serviceProduct.updateProduct(product);
 
         System.out.println("Preço atualizado!");
-    }
-
-    /**
-     * Atualiza o nome de um produto existente na base de dados.
-     */
-    private static void atualizarNomeProduto(){
-        System.out.println("\n");
-        System.out.println("ATUALIZAR NOME - PRODUTO");
-
-        System.out.println("Nome do produto: ");
-        String nameProduct = scanner.nextLine();
-        Product product = serviceProduct.readProduct(nameProduct);
-
-        System.out.println("Novo nome: ");
-        String name = scanner.nextLine();
-        ValidationProduct.validationName(name);
-
-        product.setName(name);
-        serviceProduct.updateProduct(product);
-        System.out.println("Fim da operação!");
     }
 
     /**
@@ -280,10 +257,9 @@ public class Main {
                 4 - Exibir categoria
                 5 - Exibir produto
                 6 - Atualizar quantidade - produto
-                7 - Atualizar nome - produto
-                8 - Atualizar preço - produto
-                9 - Listar todos os produtos
-               10 - Listar todas as categorias
+                7 - Atualizar preço - produto
+                8 - Listar todos os produtos
+                9 - Listar todas as categorias
                 """);
         try{
             return Integer.parseInt(scanner.nextLine());
