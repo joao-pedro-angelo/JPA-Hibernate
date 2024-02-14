@@ -58,10 +58,10 @@ public class Main {
                         atualizarPrecoProduto();
                         break;
                     case 11:
-                        listarTodasCategorias();
+                        listarTodosProdutos();
                         break;
                     case 12:
-                        listarTodosProdutos();
+                        listarTodasCategorias();
                         break;
                 }
             } catch (RegraDeNegocioException e){
