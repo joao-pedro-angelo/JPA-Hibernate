@@ -20,29 +20,25 @@ public class ServiceCategory {
         this.entityManager.getTransaction().begin();
         this.categoryDAO.createCategory(category);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public void removeCategory(Category category){
         this.entityManager.getTransaction().begin();
         this.categoryDAO.removeCategory(category);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public void updateCategory(Category category){
         this.entityManager.getTransaction().begin();
         this.categoryDAO.updateCategory(category);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public Category readCategory(String key){
         this.entityManager.getTransaction().begin();
         Category category = this.categoryDAO.readCategory(key);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
-        return  category;
+        return category;
     }
 
     public String readAllCategories(){
@@ -50,11 +46,14 @@ public class ServiceCategory {
         this.entityManager.getTransaction().begin();
         List<Category> categories = this.categoryDAO.readCategories();
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
 
         for (Category category : categories){
             result.append(category.toString());
         }
         return result.toString();
+    }
+
+    public void closeEntityManager(){
+        this.entityManager.close();
     }
 }

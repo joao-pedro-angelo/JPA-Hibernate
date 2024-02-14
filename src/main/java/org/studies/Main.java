@@ -69,6 +69,8 @@ public class Main {
             }
             opcao = exibirMenu();
         }
+        serviceProduct.closeEntityManager();
+        serviceCategory.closeEntityManager();
         System.out.println("Finalizando aplicação...");
     }
 

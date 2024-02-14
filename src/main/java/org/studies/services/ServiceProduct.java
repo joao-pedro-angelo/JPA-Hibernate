@@ -20,29 +20,25 @@ public class ServiceProduct {
         this.entityManager.getTransaction().begin();
         this.productDAO.createProduct(product);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public void removeProduct(Product product){
         this.entityManager.getTransaction().begin();
         this.productDAO.removeProduct(product);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public void updateProduct(Product product){
         this.entityManager.getTransaction().begin();
         this.productDAO.updateProduct(product);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
     }
 
     public Product readProduct(String key){
         this.entityManager.getTransaction().begin();
         Product product = this.productDAO.readProduct(key);
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
-        return  product;
+        return product;
     }
 
     public String readAllProducts(){
@@ -50,11 +46,14 @@ public class ServiceProduct {
         this.entityManager.getTransaction().begin();
         List<Product> products = this.productDAO.readProducts();
         this.entityManager.getTransaction().commit();
-        this.entityManager.close();
 
         for (Product product : products){
             result.append(product.toString());
         }
         return result.toString();
+    }
+
+    public void closeEntityManager(){
+        this.entityManager.close();
     }
 }
