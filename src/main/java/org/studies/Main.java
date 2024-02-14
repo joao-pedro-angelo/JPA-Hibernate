@@ -163,7 +163,6 @@ public class Main {
         String nameProduct = scanner.nextLine();
         ValidationProduct.validationName(nameProduct);
 
-        System.out.println("Produto: ");
         System.out.println(serviceProduct.readProduct(nameProduct));
     }
 
@@ -179,7 +178,6 @@ public class Main {
         String categoryName = scanner.nextLine();
         ValidationCategory.validationCategory(categoryName);
 
-        System.out.println("Categoria: ");
         System.out.println(serviceCategory.readCategory(categoryName));
     }
 
