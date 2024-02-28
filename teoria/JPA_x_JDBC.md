@@ -1,73 +1,59 @@
 # JPA x JDBC
 
-> CRUD que utiliza  a API JDBC para persistir os dados:
-> > https://github.com/joao-pedro-angelo/ClassicBank
-
+> Este documento explora as diferenças entre as tecnologias JDBC e JPA para acesso a bancos de dados relacionais em Java.
 
 ---
-# JDBC
+## JDBC
 
-> Especificação para acesso a banco de dados relacionais em Java
+### Visão Geral
 
-A API JDBC é uma camada de abstração do protocolo de comunicação com o banco de dados.
-A JDBC é uma especificação e os Drivers que utilziamos na configuração, são as implementações desta API.
+A API JDBC é uma especificação para acesso a bancos de dados relacionais em Java. Ela fornece uma camada de abstração sobre o protocolo de comunicação com o banco de dados e é implementada por drivers específicos para cada banco de dados.
 
-Exemplo de código que utiliza a API JDBC:
+### Exemplo de Uso
+
+Aqui está um exemplo de código que utiliza a API JDBC:
+
 ```java
-    public void abrirConta(Conta conta){
-        String sqlQuery = "INSERT INTO conta (numeroConta, saldo, cpf)" +
-                "VALUES (?, ?, ?)";
+public void abrirConta(Conta conta){
+    String sqlQuery = "INSERT INTO conta (numeroConta, saldo, cpf)" +
+            "VALUES (?, ?, ?)";
 
-        Connection connection = this.conexaoDB.recuperaConexao();
+    Connection connection = this.conexaoDB.recuperaConexao();
 
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+    try{
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
-            preparedStatement.setInt(1, conta.numeroConta());
-            preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
-            preparedStatement.setString(3, conta.cliente().cpf());
-            preparedStatement.execute();
+        preparedStatement.setInt(1, conta.numeroConta());
+        preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
+        preparedStatement.setString(3, conta.cliente().cpf());
+        preparedStatement.execute();
 
-            this.encerraConexoes(connection, preparedStatement);
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-        }
+        this.encerraConexoes(connection, preparedStatement);
+    } catch (SQLException e){
+        throw new RuntimeException(e);
     }
+}
 ```
 
-Mesmo esta API sendo uma abstração que visa causar impacto mínimo ao trocar de banco de dados,
-a JDBC ainda resulta em um alto acoplamento entre a aplicação e o banco de dados. Mesmo que algum design pattern
-seja utilizado, como o DAO Pattern, ainda há o acoplamento elevado entre a aplicação e o banco de dados.
+---
+### Desafios
 
-Logo, qualquer mudança, mesmo que seja uma simples troca no nome de determinada coluna, gera um alto impacto na aplicação,
-resultando em mudanças em diversas partes do código.
-
-Veja no código acima, que é necessário conhecer a linguagem de busca estruturada, SQL,
-e além disso, o acesso ao banco de dados é feito de forma direta, tendo que utilizar nome da tabela,
-às vezes nome de alguma coluna, o que resulta em alto acoplamento.
-
+Apesar de ser uma abstração que minimiza o impacto de mudanças de banco de dados, a JDBC resulta em um alto acoplamento entre a aplicação e o banco de dados. Qualquer alteração na estrutura do banco de dados requer mudanças significativas no código da aplicação. Além disso, o acesso direto ao banco de dados através de SQL aumenta a complexidade e o acoplamento.
 
 ---
-# JPA
+## JPA
 
-> Especificação mais moderna para acesso a banco de dados relacionais em Java
+### Visão Geral
 
-A JPA surge como uma alternativa à API JDBC, de modo que resulta em um acoplamento menor
-entre a aplicação e o banco de dados. Além disso, com a JPA, o código fica muito menos verboso, sendo mais
-prático de ser utilizado.
+A JPA (Java Persistence API) é uma especificação mais moderna para acesso a bancos de dados relacionais em Java. Ela oferece uma alternativa à JDBC com o objetivo de reduzir o acoplamento entre a aplicação e o banco de dados.
 
+### ORM (Object-Relational Mapping)
 
-## ORM
+A JPA utiliza a técnica Object-Relational Mapping (ORM) para mapear objetos Java para tabelas no banco de dados. Isso permite uma abstração mais elevada em comparação com o uso direto da JDBC. Com o ORM, as consultas SQL são menos frequentemente necessárias e o acoplamento com o banco de dados é reduzido.
 
-A JPA utiliza a técnica Object-Relation-Mapping (ORM) para realizar a persistência de dados.
-Esta técnica aproxima o paradigma orientado a objetos dos bancos de dados relacionais.
+---
+### JPA Hibernate
 
-Com o mapeamento objeto relacional, a persistência de dados fica muito mais simples, de modo que as consultas SQL nem
-sempre são necessárias e o acoplamento com o banco de dados é bem menor que com JDBC puro.
+O Hibernate é uma das implementações da JPA. Ele fornece funcionalidades adicionais e aprimoramentos sobre a JPA padrão, simplificando ainda mais o desenvolvimento de aplicações Java que interagem com bancos de dados relacionais.
 
-Vale lembrar, que a JPA utiliza o JDBC por baixo dos panos. Mas a camada de abstração é maior.
-
-
-## JPA Hibernate
-
-A JPA é uma especifação. O Hibernate é uma das implementações da JPA
+Em resumo, a JPA oferece uma alternativa mais eficiente e de maior nível de abstração em comparação com a JDBC, resultando em código mais limpo, menos verboso e com menor acoplamento ao banco de dados.
