@@ -40,8 +40,3 @@ public class Produto {
     private BigDecimal preco;
 }
 ```
-
-Utilizamos as anotações para indicar à JPA o que ela deve fazer e como o
-mapeamento deve ser realizado.
-
-**Mapeamento Objeto-Relacional (ORM)** em prática.
