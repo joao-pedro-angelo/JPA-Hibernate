@@ -1,12 +1,8 @@
 ## Tipagem das colunas
 
-Já sabemos que, ao criar uma entidade, esta será mapeada para uma tabela
-no banco de dados. As colunas serão do tipo de cada um dos atributos. Porém, e quando
-o atributo não for primitivo nem derivado de um primitivo?
+Quando definimos uma entidade em um sistema Java com JPA, os atributos dessa entidade são mapeados para colunas no banco de dados. Geralmente, os tipos primitivos e alguns tipos especiais, como `LocalDate`, são mapeados automaticamente sem necessidade de configuração extra. No entanto, para tipos mais complexos, como enumeradores, é necessário realizar uma configuração adicional utilizando anotações.
 
-Os tipos primitivos, seus derivados e alguns tipos especiais como LocalDate são mapeados para
-colunas sem necessidade de configuração extra. Porém, outros tipos, como enumeradores, necessitam de 
-uma configuração por anotação. Para enumeradores, basta usar:
+Por exemplo, ao lidar com enumeradores, podemos utilizar a anotação `@Enumerated` para indicar à JPA como o mapeamento deve ser realizado. Veja um exemplo:
 
 ```java
 import javax.persistence.EnumType;
@@ -16,24 +12,22 @@ import javax.persistence.Enumerated;
 private AlgumEnum meuEnum;
 ```
 
-Assim, a JPA saberá que deve mapear aquele atributo para uma coluna
-do tipo String e a coluna será nomeada como "AlgumEnum", assumindo o valor de "meuEnum".
-
+Dessa forma, a JPA saberá que o atributo `meuEnum` deve ser mapeado para uma coluna do tipo String no banco de dados.
 
 ---
 ## Relacionamento entre tabelas
 
-Quando temos mais de uma tabela em nosso sistema, ou seja, mais de uma entidade, elas podem se relacionar 
-por meio da composição e serem facilmente mapeadas por meio de anotações.
+Quando lidamos com mais de uma tabela em nosso sistema, é comum que essas tabelas se relacionem entre si. Isso é feito por meio de relacionamentos, que podem ser mapeados utilizando anotações na JPA.
 
-### Exemplos de relacionamentos: 
-#### ManyToOne e OneToMany
-É o relacionamento de muitos para um, por exemplo:
-```txt
-@Entity(name = "consulta")
+### Many-to-One e One-to-Many
+
+O relacionamento Many-to-One representa a relação de muitos para um entre entidades. Por exemplo, muitas consultas podem estar associadas a uma única pessoa. Veja um exemplo de mapeamento:
+
+```java
+@Entity(name = "Consulta")
 @Table(name = "consultas")
-public class Consulta{
-  
+public class Consulta {
+
   @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
 
@@ -42,16 +36,13 @@ public class Consulta{
   private Pessoa pessoa;
 }
 ```
-Muitas consultas para uma pessoa. Uma pessoa pode ter muitas consultas.
 
-Quando o relacionamento é unidirecional, então apenas um dos lados da relação tem a referência para o outro.
-Porém, em relacionamentos @ManyToOne, é comum mapear o outro lado como @OneToMany, ou seja, temos um relacionamento bidirecional.
+Para estabelecer um relacionamento bidirecional, onde a entidade `Pessoa` possui uma lista de consultas, precisamos mapear o lado oposto do relacionamento:
 
-No caso, na classe Pessoa, teríamos:
-```txt
-@Entity(name = "pessoa")
+```java
+@Entity(name = "Pessoa")
 @Table(name = "pessoas")
-public class Pessoa{
+public class Pessoa {
 
   @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
@@ -61,18 +52,15 @@ public class Pessoa{
 }
 ```
 
-> Se liga nas anotações! Em um relacionamento bidirecional, do tipo @ManyToOne e @OneToMany, é importante dizer para a JPA
-> qual é o lado dominante da relação. O lado dominante é sempre o do @ManyToOne (Muitos dominam um). Para dizer que este lado é dominante, basta inserir a anotação @JoinColumn(name = "..."), especificando a chave estrangeira do dominado. Já na classe dominada, insira o atributo "mappedBy=...".
+### Many-to-Many
 
-#### ManyToMany - ManyToMany
-> Sobre este relacionamento:<br> https://www.devmedia.com.br/manytomany-hibernate-variacoes-unidirecional-e-bidirecional/29535
+Para relacionamentos Many-to-Many, onde uma entidade possui múltiplas associações com outra entidade e vice-versa, é necessário um tratamento especial de mapeamento. Para mais detalhes sobre esse tipo de relacionamento, consulte a documentação ou este [artigo](https://www.devmedia.com.br/manytomany-hibernate-variacoes-unidirecional-e-bidirecional/29535).
 
-#### OnetoOne - OneToOne
-> Sobre:<br> https://atitudereflexiva.wordpress.com/2017/12/04/a-melhor-forma-de-mapear-um-relacionamento-onetoone-com-jpa/
+### One-to-One
 
+Relacionamentos One-to-One representam a relação onde uma entidade está associada a exatamente uma instância de outra entidade. Para mais informações sobre esse tipo de relacionamento, consulte este [artigo](https://atitudereflexiva.wordpress.com/2017/12/04/a-melhor-forma-de-mapear-um-relacionamento-onetoone-com-jpa/).
 
 ---
-#### Cuidado com a exceção de transação!
+### Cuidado com a exceção de transação!
 
-Em nosso sistema, um produto tem uma categoria. Para salvarmos um produto na base de dados, é necessário que a categoria dele
-já esteja salva no banco de dados. Produto possui/contém uma categoria. Logo, a categoria tem que existir antes do produto.
+Ao lidar com relacionamentos complexos, como no exemplo onde um produto depende de uma categoria existente no banco de dados, é importante garantir que as transações sejam tratadas de forma adequada. Certifique-se de que a categoria associada a um produto já esteja persistida no banco de dados antes de tentar salvar o produto, evitando assim exceções de transação.
