@@ -1,6 +1,3 @@
-# Outros relacionamentos
-
----
 ## Tipagem das colunas
 
 Já sabemos que, ao criar uma entidade, esta será mapeada para uma tabela
@@ -67,12 +64,10 @@ public class Pessoa{
 > Se liga nas anotações! Em um relacionamento bidirecional, do tipo @ManyToOne e @OneToMany, é importante dizer para a JPA
 > qual é o lado dominante da relação. O lado dominante é sempre o do @ManyToOne (Muitos dominam um). Para dizer que este lado é dominante, basta inserir a anotação @JoinColumn(name = "..."), especificando a chave estrangeira do dominado. Já na classe dominada, insira o atributo "mappedBy=...".
 
-
-#### ManyToMany e ManyToMany
+#### ManyToMany - ManyToMany
 > Sobre este relacionamento:<br> https://www.devmedia.com.br/manytomany-hibernate-variacoes-unidirecional-e-bidirecional/29535
 
-
-#### OnetoOne e OneToOne
+#### OnetoOne - OneToOne
 > Sobre:<br> https://atitudereflexiva.wordpress.com/2017/12/04/a-melhor-forma-de-mapear-um-relacionamento-onetoone-com-jpa/
 
 
