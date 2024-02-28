@@ -29,11 +29,51 @@ do tipo String e a coluna será nomeada como "AlgumEnum", assumindo o valor de "
 Quando temos mais de uma tabela em nosso sistema, ou seja, mais de uma entidade, elas podem se relacionar 
 por meio da composição e serem facilmente mapeadas por meio de anotações.
 
-Há anotações para relacionamentos de um para um, **@OneToOne**, muitos para um, **@ManyToOne**, e assim por diante!
+### Exemplos de relacionamentos: 
+#### ManyToOne e OneToMany
+É o relacionamento de muitos para um, por exemplo:
+```txt
+@Entity(name = "consulta")
+@Table(name = "consultas")
+public class Consulta{
+  
+  @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Long id;
 
-### Exemplo de relacionamento: 
-#### OneToMany
-O relacionamento OneToMany indica que uma entidade está associada a várias instâncias de outra entidade. Por exemplo, uma categoria pode ter vários produtos. Nesse caso, a categoria seria a entidade "um" e os produtos seriam a entidade "muitos".
+  @ManyToOne
+  @JoinColumn(name = "pessoa_id")
+  private Pessoa pessoa;
+}
+```
+Muitas consultas para uma pessoa. Uma pessoa pode ter muitas consultas.
+
+Quando o relacionamento é unidirecional, então apenas um dos lados da relação tem a referência para o outro.
+Porém, em relacionamentos @ManyToOne, é comum mapear o outro lado como @OneToMany, ou seja, temos um relacionamento bidirecional.
+
+No caso, na classe Pessoa, teríamos:
+```txt
+@Entity(name = "pessoa")
+@Table(name = "pessoas")
+public class Pessoa{
+
+  @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Long id;
+
+  @OneToMany(mappedBy="pessoa")
+  private List<Consulta> consultas;
+}
+```
+
+> Se liga nas anotações! Em um relacionamento bidirecional, do tipo @ManyToOne e @OneToMany, é importante dizer para a JPA
+> qual é o lado dominante da relação. O lado dominante é sempre o do @ManyToOne (Muitos dominam um). Para dizer que este lado é dominante, basta inserir a anotação @JoinColumn(name = "..."), especificando a chave estrangeira do dominado. Já na classe dominada, insira o atributo "mappedBy=...".
+
+
+#### ManyToMany e ManyToMany
+> Sobre este relacionamento:<br> https://www.devmedia.com.br/manytomany-hibernate-variacoes-unidirecional-e-bidirecional/29535
+
+
+#### OnetoOne e OneToOne
+> Sobre:<br> https://atitudereflexiva.wordpress.com/2017/12/04/a-melhor-forma-de-mapear-um-relacionamento-onetoone-com-jpa/
 
 
 ---
